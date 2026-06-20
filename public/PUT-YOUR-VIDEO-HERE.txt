@@ -1,0 +1,16 @@
+Drop your intro video (.mp4) into THIS folder (public/).
+
+Then open  src/config.js  and set:
+
+    videoSrc: '/your-file-name.mp4'
+
+Example: if you save it as  public/my-pitch.mp4
+         set       videoSrc: '/my-pitch.mp4'
+
+Tips:
+- Keep it under ~50 MB if you can (compress with HandBrake) so it loads fast.
+- An .mp4 with H.264 video + AAC audio plays everywhere.
+- Optional: add a still image as a poster, e.g. public/poster.jpg, then set
+  videoPoster: '/poster.jpg' in config.js.
+
+You can delete this .txt file once your video is in.
