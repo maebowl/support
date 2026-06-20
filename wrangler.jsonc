@@ -9,16 +9,13 @@
     "directory": "./dist",
     // Serve index.html for any unmatched path (single-page-app behavior).
     "not_found_handling": "single-page-application"
-  }
+  },
 
-  // ── Custom domain (support.mabelwallin.com) ──────────────────────────────
-  // Easiest: add it in the dashboard after the first deploy
-  //   (Workers & Pages → this Worker → Settings → Domains & Routes → Add).
-  //
-  // OR, if mabelwallin.com's DNS is managed in THIS Cloudflare account, you can
-  // have deploys provision it automatically by uncommenting this block:
-  //
-  // ,"routes": [
-  //   { "pattern": "support.mabelwallin.com", "custom_domain": true }
-  // ]
+  // Custom domain — deploys provision support.mabelwallin.com automatically.
+  // (mabelwallin.com's DNS is on this Cloudflare account, so this works.)
+  // NOTE: delete any manual `support` CNAME in the DNS tab first, or the deploy
+  // will fail with a record-conflict error.
+  "routes": [
+    { "pattern": "support.mabelwallin.com", "custom_domain": true }
+  ]
 }
