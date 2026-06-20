@@ -1,0 +1,24 @@
+{
+  // Cloudflare Worker that serves this site's static build (the `dist/` folder).
+  // No Worker code runs — it's static-assets only — but this lives on Workers
+  // so you can add backend logic later without changing platforms.
+  // Docs: https://developers.cloudflare.com/workers/static-assets/
+  "name": "support-mabelwallin",
+  "compatibility_date": "2026-06-20",
+  "assets": {
+    "directory": "./dist",
+    // Serve index.html for any unmatched path (single-page-app behavior).
+    "not_found_handling": "single-page-application"
+  }
+
+  // ── Custom domain (support.mabelwallin.com) ──────────────────────────────
+  // Easiest: add it in the dashboard after the first deploy
+  //   (Workers & Pages → this Worker → Settings → Domains & Routes → Add).
+  //
+  // OR, if mabelwallin.com's DNS is managed in THIS Cloudflare account, you can
+  // have deploys provision it automatically by uncommenting this block:
+  //
+  // ,"routes": [
+  //   { "pattern": "support.mabelwallin.com", "custom_domain": true }
+  // ]
+}

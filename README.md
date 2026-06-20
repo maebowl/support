@@ -38,20 +38,36 @@ The camera and progress bar fill themselves based on `raised` ÷ `goal`.
 Until you do, the page shows a tidy "video coming soon" placeholder — so it
 never looks broken. (See `public/PUT-YOUR-VIDEO-HERE.txt`.)
 
-## Deploying to Cloudflare Pages (support.mabelwallin.com)
+## Deploying to Cloudflare Workers (support.mabelwallin.com)
 
-1. Push this folder to a GitHub repo.
-2. In the Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** →
-   **Connect to Git**, pick the repo.
+This deploys as a **static-assets Worker** (config in `wrangler.jsonc`). No
+server code runs today — but living on Workers means you can add backend logic
+later without switching platforms. SPA routing is handled by
+`not_found_handling: "single-page-application"` in `wrangler.jsonc`.
+
+### Option A — push to deploy (recommended)
+
+1. Push this repo to GitHub (already at `github.com/maebowl/support`).
+2. Cloudflare dashboard → **Workers & Pages** → **Create** → **Workers** →
+   **Connect to Git** (this is "Workers Builds"), pick the repo.
 3. Build settings:
-   - **Framework preset:** Vite
    - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-4. After it deploys, go to the project's **Custom domains** tab and add
-   `support.mabelwallin.com`. Cloudflare adds the DNS record for you.
+   - **Deploy command:** `npx wrangler deploy`
+4. Every `git push` then builds and redeploys automatically.
 
-Every `git push` redeploys automatically. The `public/_redirects` file keeps the
-single-page app working on any URL.
+### Option B — deploy from your machine
+
+```bash
+npx wrangler login   # one time
+npm run deploy        # builds, then wrangler deploy
+```
+
+### Custom domain
+
+After the first deploy, in the Worker's **Settings → Domains & Routes → Add**,
+add `support.mabelwallin.com`. (If mabelwallin.com's DNS is in this same
+Cloudflare account, you can instead uncomment the `routes` block in
+`wrangler.jsonc` and deploys will set it up automatically.)
 
 ## Update the amount raised (the part you'll do most)
 

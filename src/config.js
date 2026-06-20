@@ -1,7 +1,7 @@
 // ───────────────────────────────────────────────────────────────────────────
 //  EDIT ME  ✏️   —  this is the only file you need to touch for normal updates.
 //  After changing something here: save, `git commit`, `git push`, and
-//  Cloudflare Pages redeploys the site for you automatically.
+//  Cloudflare Workers redeploys the site for you automatically.
 // ───────────────────────────────────────────────────────────────────────────
 
 export const config = {
