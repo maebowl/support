@@ -39,7 +39,29 @@ function CameraArt({ body, accent, detail, glass, highlight }) {
 
 export default function CameraGoal() {
   const goal = Math.max(0, Number(config.goal) || 0)
-  const raised = Math.max(0, Number(config.raised) || 0)
+  const [raised, setRaised] = useState(Math.max(0, Number(config.raised) || 0))
+
+  // Pull the live total from the Worker (/api/total), which the Ko-fi webhook
+  // keeps updated. Falls back to config.raised if the backend isn't reachable
+  // (e.g. local dev), so the camera always shows something sensible. Re-checks
+  // every 45s so an open page ticks up on its own.
+  useEffect(() => {
+    let alive = true
+    const load = () =>
+      fetch('/api/total')
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (alive && d && Number.isFinite(d.raised)) setRaised(Math.max(0, d.raised))
+        })
+        .catch(() => {})
+    load()
+    const id = setInterval(load, 45000)
+    return () => {
+      alive = false
+      clearInterval(id)
+    }
+  }, [])
+
   const pct = goal > 0 ? Math.min(100, Math.round((raised / goal) * 100)) : 0
   const funded = raised >= goal && goal > 0
 
@@ -51,16 +73,16 @@ export default function CameraGoal() {
   }, [pct])
 
   const status = funded
-    ? '🎉 the camera is FUNDED — thank you, seriously. now i make stuff.'
+    ? 'we did it?? it’s funded. i’m gonna make so much stuff. thank you, truly.'
     : pct >= 85
-    ? 'so close i can almost hear the shutter click 📸'
+    ? 'okay we are SO close, i can’t.'
     : pct >= 60
-    ? 'over halfway there — let’s bring it home 🙌'
+    ? 'over halfway. y’all are unreal.'
     : pct >= 30
-    ? 'we’re picking up speed!'
+    ? 'ok this is actually happening.'
     : pct > 0
-    ? 'it’s started — every little bit fills the frame.'
-    : 'an empty camera. let’s change that 🎬'
+    ? 'it’s started, and every bit genuinely helps.'
+    : 'nothing yet, and that’s totally okay. zero pressure.'
 
   return (
     <section className="rounded-2xl border border-amber-400/30 bg-slate-dark p-6 sm:p-10">
@@ -104,17 +126,17 @@ export default function CameraGoal() {
               />
             )}
           </div>
-          <p className="mt-3 text-5xl font-extrabold tabular-nums text-amber-400">
+          <p className="mt-3 font-display text-5xl font-bold tabular-nums text-amber-400">
             {pct}%
           </p>
         </div>
 
         {/* The numbers + call to action */}
         <div className="w-full max-w-md text-center lg:text-left">
-          <p className="text-sm font-medium uppercase tracking-widest text-gray-400">
-            how close we are to {config.cameraName}
+          <p className="font-display text-sm font-medium uppercase tracking-widest text-gray-400">
+            saving for a {config.cameraName}
           </p>
-          <p className="mt-2 text-4xl font-bold text-white sm:text-5xl">
+          <p className="mt-2 font-display text-4xl font-bold tabular-nums text-white sm:text-5xl">
             {usd(raised)}
             <span className="text-xl font-medium text-gray-400 sm:text-2xl">
               {' '}
@@ -144,7 +166,7 @@ export default function CameraGoal() {
             chip in on ko-fi
           </a>
           <p className="mt-3 text-xs text-gray-500">
-            every dollar goes straight to gear. thank you 🤍
+            every cent goes to the camera, nothing else. thank you, genuinely.
           </p>
         </div>
       </div>

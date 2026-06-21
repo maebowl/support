@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "support.mabelwallin.com — a little page asking for help getting a real camera.",
+  "description": "A little page on support.mabelwallin.com asking for help getting a real camera.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

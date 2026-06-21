@@ -9,89 +9,144 @@ export default function Support() {
     <div className="flex min-h-screen flex-col bg-charcoal">
       <Navbar />
 
-      <main className="mx-auto w-full max-w-5xl flex-grow px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+      {/* ── Full-screen video hero ───────────────────────────────────────── */}
+      {/* Fills the viewport (minus the 4rem navbar) so the video is all you see
+          on first load. 100dvh keeps it right on mobile browsers. */}
+      <section className="relative h-[calc(100dvh-4rem)] w-full border-b-2 border-amber-400/30 bg-black">
+        <VideoHero />
+
+        {/* subtle "scroll down" cue */}
+        <a
+          href="#more"
+          aria-label="scroll down to read more"
+          className="absolute bottom-5 left-1/2 -translate-x-1/2 text-amber-300/80 transition-colors hover:text-amber-300"
+        >
+          <svg
+            className="h-7 w-7 animate-bounce"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+      </section>
+
+      <main
+        id="more"
+        className="mx-auto w-full max-w-5xl flex-grow px-4 py-12 sm:px-6 sm:py-16 lg:px-8"
+      >
         <div className="animate-fade-in space-y-14 sm:space-y-20">
-          {/* ── Intro ──────────────────────────────────────────────────── */}
-          <section className="text-center">
-            <p className="text-sm font-medium uppercase tracking-widest text-amber-400">
-              invest in what i make next
-            </p>
-            <h1 className="mt-3 text-4xl font-bold text-white sm:text-5xl">
-              help me get {config.cameraName}
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-300">
-              hi, i’m mabel — 16, in san diego, and kind of obsessed with photo +
-              video. right now my gear is the one thing holding me back. here’s the
-              whole situation ↓
-            </p>
-          </section>
-
-          {/* ── The video ──────────────────────────────────────────────── */}
-          <section>
-            <VideoHero />
-            <p className="mt-4 text-center text-sm text-gray-500">
-              press play — i explain everything in about a minute.
-            </p>
-          </section>
-
-          {/* ── The situation, in text ─────────────────────────────────── */}
+          {/* ── ok so, here's the deal ─────────────────────────────────── */}
           <section className="mx-auto max-w-2xl space-y-4 text-center text-gray-300">
-            <h2 className="text-2xl font-bold text-white">the short version</h2>
+            <h2 className="font-display text-2xl font-bold text-white">ok so here’s the deal</h2>
             <p>
-              i love shooting — videos, photos, all of it. but i’ve hit the ceiling
-              of what my current setup can do. better gear means sharper photos,
-              smoother footage, and a lot more of the stuff i actually want to make.
+              my camera is 20 years old and literally can’t shoot video. so any time i
+              wanna make something that moves, i’m stuck filming on my phone, which,
+              yeah, isn’t optimal.
             </p>
             <p>
-              so i’m asking the people who believe in me to{' '}
-              <span className="font-semibold text-amber-300">invest in my future</span>{' '}
-              as a videographer and photographer. think of it less like a donation
-              and more like backing chapter one. every contribution gets me closer to
-              the camera — watch it fill up below.
+              here’s the thing though: i’m not trying to do anything new. i already
+              shoot all sorts of shit. music videos, horror movies, photoshoots,
+              travel logs, you name it. a real camera doesn’t magically let me do stuff
+              i can’t already do (besides, you know, video). it just means everything
+              i’m already making comes out{' '}
+              <span className="font-semibold text-amber-300">way, way better</span>. it’s
+              a quality thing.
+            </p>
+            <p>
+              so here’s the dream: a fujifilm x-s10 (~$700) plus a little xf 35mm f/2
+              lens (~$275). about $975 all in, to finally make the stuff in my head
+              come out the way i actually see it.
             </p>
           </section>
 
           {/* ── The goal visual ────────────────────────────────────────── */}
           <CameraGoal />
 
-          {/* ── What it unlocks ────────────────────────────────────────── */}
-          <section className="grid gap-4 sm:grid-cols-3">
-            {[
-              {
-                emoji: '📸',
-                title: 'sharper photos',
-                body: 'real glass + a real sensor means shots i can’t get right now.',
-              },
-              {
-                emoji: '🎬',
-                title: 'better videos',
-                body: 'smoother, cleaner footage for the channel and beyond.',
-              },
-              {
-                emoji: '🚀',
-                title: 'more of it',
-                body: 'less fighting my gear, more time actually creating.',
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="rounded-xl border border-charcoal-300 bg-slate-dark p-6 text-center"
-              >
-                <div className="text-3xl">{card.emoji}</div>
-                <h3 className="mt-3 text-lg font-semibold text-amber-400">{card.title}</h3>
-                <p className="mt-2 text-sm text-gray-300">{card.body}</p>
-              </div>
-            ))}
+          {/* ── What you get if you chip in ────────────────────────────── */}
+          <section className="space-y-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-display text-2xl font-bold text-white">oh, and you get stuff</h2>
+              <p className="mt-3 text-gray-300">
+                you don’t walk away empty-handed (unless you want to). chip in and i’ve
+                got you. take your pick:
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {[
+                {
+                  icon: (
+                    <>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 14.5V9.25" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 11c0-2.2 1.6-3.8 3.8-3.8 0 2.2-1.6 3.8-3.8 3.8z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 11c0-2.2-1.6-3.8-3.8-3.8 0 2.2 1.6 3.8 3.8 3.8z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 14.5h12l-1.15 5a1 1 0 0 1-1 .77H8.15a1 1 0 0 1-1-.77L6 14.5z" />
+                    </>
+                  ),
+                  title: 'a planter box',
+                  body: 'homemade, wooden, built by me. yeah, i make those too.',
+                },
+                {
+                  icon: (
+                    <>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
+                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z" />
+                    </>
+                  ),
+                  title: 'a photoshoot',
+                  body: 'amateur photography, shot by yours truly.',
+                },
+                {
+                  icon: (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 10.5l4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
+                    />
+                  ),
+                  title: 'or a video',
+                  body: 'amateur videography, if that’s more your vibe.',
+                },
+              ].map((card) => (
+                <div
+                  key={card.title}
+                  className="rounded-xl border border-charcoal-300 bg-slate-dark p-6 text-center"
+                >
+                  <svg
+                    className="mx-auto h-8 w-8 text-amber-400"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    {card.icon}
+                  </svg>
+                  <h3 className="mt-3 font-display text-lg font-bold text-amber-400">{card.title}</h3>
+                  <p className="mt-2 text-sm text-gray-300">{card.body}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
-          {/* ── Closing CTA ────────────────────────────────────────────── */}
+          {/* ── No pressure, closing ───────────────────────────────────── */}
           <section className="rounded-2xl bg-gradient-to-br from-slate-dark to-charcoal-300 p-8 text-center sm:p-12">
-            <h2 className="text-2xl font-bold text-white sm:text-3xl">
-              want to be part of it?
+            <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+              no pressure. like, genuinely.
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-gray-300">
-              any amount helps, and i’ll never forget who backed me early. thank you
-              for believing in the work 🤍
+              okay, the actual important part. do i want this camera? egregiously, yes.
+              but not even slightly at the cost of you feeling any pressure. if chipping
+              in would bring you a bit of joy, amazing, and literally anything helps. if
+              it wouldn’t, also completely amazing, and please don’t feel bad or weird
+              about it for even a second. i just like making things, and i like making
+              them for people. either way, i’m really glad you’re here.
             </p>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
@@ -100,7 +155,7 @@ export default function Support() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg bg-amber-400 px-8 py-3 text-base font-semibold text-charcoal transition-colors hover:bg-amber-500"
               >
-                support me on ko-fi
+                chip in on ko-fi
               </a>
               <a
                 href={config.youtubeUrl}
@@ -108,7 +163,7 @@ export default function Support() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg border border-amber-400/40 px-8 py-3 text-base font-semibold text-amber-300 transition-colors hover:bg-amber-400/10"
               >
-                see what i make
+                watch my stuff
               </a>
             </div>
           </section>
