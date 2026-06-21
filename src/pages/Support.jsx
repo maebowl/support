@@ -42,8 +42,10 @@ export default function Support() {
           <section className="mx-auto max-w-2xl space-y-4 text-center text-gray-300">
             <h2 className="font-display text-2xl font-bold text-white">ok so here’s the deal</h2>
             <p>
-              my camera is 20 years old and literally can’t shoot video. so any time i
-              wanna make something that moves, i’m stuck filming on my phone, which,
+              for the last year i’ve been shooting on a 20 year old canon i love to
+              pieces. but it’s got two problems: a) it literally can’t shoot video, and
+              2) the lens isn’t even mine, it’s on loan from my aunt jane. so the second
+              i wanna make something that moves, i’m stuck filming on my phone. which,
               yeah, isn’t optimal.
             </p>
             <p>
@@ -57,8 +59,9 @@ export default function Support() {
             </p>
             <p>
               so here’s the dream: a fujifilm x-s10 (~$700) plus a little xf 35mm f/2
-              lens (~$275). about $975 all in, to finally make the stuff in my head
-              come out the way i actually see it.
+              lens (~$275) that would, crucially, be mine. (no offense, aunt jane.)
+              about $975 all in, to finally make the stuff in my head come out the way i
+              actually see it.
             </p>
           </section>
 
