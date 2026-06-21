@@ -4,9 +4,6 @@
 
 html {
   background-color: #1a1a1a;
-  /* Reserve a scrollbar gutter on BOTH sides so the (always-present) right-hand
-     scrollbar doesn't nudge centered content left of the true window center. */
-  scrollbar-gutter: stable both-edges;
 }
 
 body {
@@ -15,6 +12,7 @@ body {
     'Roboto', 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
   background-color: #1a1a1a;
 }
 
