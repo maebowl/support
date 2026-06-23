@@ -19,7 +19,7 @@ export default function Support() {
         <a
           href="#more"
           aria-label="scroll down to read more"
-          className="absolute bottom-2 left-1/2 -translate-x-1/2 p-3 text-amber-300/80 transition-colors hover:text-amber-300"
+          className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden p-3 text-amber-300/80 transition-colors hover:text-amber-300 sm:block"
         >
           <svg
             className="h-7 w-7 animate-bounce"
