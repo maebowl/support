@@ -45,8 +45,8 @@ export default function Support() {
               for the last year i’ve been shooting on a 20 year old canon i love to
               pieces. but it’s got two problems: a) it literally can’t shoot video, and
               2) the lens isn’t even mine, it’s on loan from my aunt jane. so the second
-              i wanna make something that moves, i’m stuck filming on my phone. which,
-              yeah, isn’t optimal.
+              i wanna make something that moves, i’m stuck filming on my phone. which
+              isn’t optimal.
             </p>
             <p>
               here’s the thing though: i’m not trying to do anything new. i already
@@ -89,7 +89,7 @@ export default function Support() {
                     </>
                   ),
                   title: 'a planter box',
-                  body: 'homemade, wooden, built by me. yeah, i make those too.',
+                  body: 'homemade, wooden, built by me.',
                 },
                 {
                   icon: (
