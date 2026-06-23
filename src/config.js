@@ -24,12 +24,10 @@ export const config = {
   kofiUrl: 'https://ko-fi.com/mabelwallin', //  ← REPLACE with your real link
 
   // ── Your intro video ─────────────────────────────────────────────────────
-  // 1. Drop your .mp4 into the `public/` folder.
-  // 2. Put its filename here with a leading slash.
-  //    e.g. file `public/my-pitch.mp4`  →  videoSrc: '/my-pitch.mp4'
-  // Until the file exists, the page shows a tidy "coming soon" placeholder.
-  videoSrc: '/support-video.mp4',
-  videoPoster: '', // optional: a still frame, e.g. '/poster.jpg' (also in public/)
+  // Upload your video to YouTube (unlisted is fine) and paste the video ID here.
+  // e.g. https://youtu.be/HsqJ1cXwUCE  →  youtubeId: 'HsqJ1cXwUCE'
+  // Leave blank to show a "coming soon" placeholder instead.
+  youtubeId: 'HsqJ1cXwUCE',
 
   // ── Link back to your main site ──────────────────────────────────────────
   siteUrl: 'https://mabelwallin.com',
