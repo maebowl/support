@@ -12,14 +12,14 @@ export default function Support() {
       {/* ── Full-screen video hero ───────────────────────────────────────── */}
       {/* Fills the viewport (minus the 4rem navbar) so the video is all you see
           on first load. 100dvh keeps it right on mobile browsers. */}
-      <section className="relative h-[calc(100dvh-4rem)] w-full border-b-2 border-amber-400/30 bg-black">
+      <section className="relative aspect-video w-full sm:aspect-auto sm:h-[calc(100dvh-4rem)] border-b-2 border-amber-400/30 bg-black">
         <VideoHero />
 
         {/* subtle "scroll down" cue */}
         <a
           href="#more"
           aria-label="scroll down to read more"
-          className="absolute bottom-5 left-1/2 -translate-x-1/2 text-amber-300/80 transition-colors hover:text-amber-300"
+          className="absolute bottom-2 left-1/2 -translate-x-1/2 p-3 text-amber-300/80 transition-colors hover:text-amber-300"
         >
           <svg
             className="h-7 w-7 animate-bounce"
